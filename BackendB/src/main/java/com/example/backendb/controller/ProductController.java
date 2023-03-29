@@ -24,19 +24,19 @@ public class ProductController {
         return service.getProducts();
     }
     @GetMapping("/ProductById/{id}")
-    public Product findProductById(@PathVariable int id){
+    public Product findProductById(@PathVariable Long id){
         return service.getProductById(id);
     }
     @GetMapping("/ProductByName/{name}")
     public Product findProductByName(@PathVariable String name){
         return service.getProductByName(name);
     }
-    @PutMapping("/update")
+    @PutMapping("/updateProduct")
     public Product updateProduct(@RequestBody Product product){
         return service.updateProduct(product);
     }
-    @DeleteMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable int id){
+    @DeleteMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable Long id){
         return service.deleteProduct(id);
     }
 }

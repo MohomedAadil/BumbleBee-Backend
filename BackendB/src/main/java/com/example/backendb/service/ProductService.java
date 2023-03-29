@@ -21,13 +21,13 @@ public class ProductService {
     public List<Product> getProducts(){
         return repository.findAll();
     }
-    public Product getProductById(int id){
+    public Product getProductById(Long id){
         return repository.findById(id).orElse(null);
     }
     public Product getProductByName(String name){
         return repository.findByName(name);
     }
-    public String deleteProduct(int id){
+    public String deleteProduct(Long id){
         repository.deleteById(id);
         return "Product Removed!! "+id;
     }
