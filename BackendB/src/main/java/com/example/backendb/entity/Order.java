@@ -13,16 +13,17 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-    @ManyToMany
-    @JoinTable(name = "order_product",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+//    private Customer customer;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "order_products",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
     private List<Product> products;
     private Date date;
 
+    //@Column(name = "customer_id", insertable = false, updatable = false)
     public Long getId() {
         return id;
     }
@@ -31,13 +32,13 @@ public class Order {
         this.id = id;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 
     public List<Product> getProducts() {
         return products;
@@ -65,16 +66,18 @@ public class Order {
     public void setProductIds(List<Long> productIds) {
         this.productIds = productIds;
     }
-
-    private Long customerId;
-
-    public Long getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
-    }
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+//    private Long customerId;
+//
+//
+//    public Long getCustomerId() {
+//        return customerId;
+//    }
+//
+//    public void setCustomerId(Long customerId) {
+//        this.customerId = customerId;
+//    }
 
     private Date orderDate;
 

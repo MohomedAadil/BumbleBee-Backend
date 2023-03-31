@@ -38,7 +38,7 @@ public class OrderController {
     }
 
     // Get an order by id
-    @GetMapping("/Orders/{id}")
+    @GetMapping("/Order/{id}")
     public Order getOrderById(@PathVariable Long id) {
         return orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id " + id));
@@ -48,9 +48,9 @@ public class OrderController {
     @PostMapping("/newOrder")
     public Order createOrder(@Valid @RequestBody Order order) {
         // Set customer and product for the order
-        Customer customer = customerRepository.findById(order.getCustomerId())
-                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + order.getCustomerId()));
-        order.setCustomer(customer);
+//        Customer customer = customerRepository.findById(order.getCustomerId())
+//                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + order.getCustomerId()));
+//        order.setCustomer(customer);
         List<Product> products = new ArrayList<>();
         for (Long productId : order.getProductIds()) {
             Product product = productRepository.findById(productId)
@@ -69,9 +69,9 @@ public class OrderController {
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id " + id));
 
         // Update customer and product for the order
-        Customer customer = customerRepository.findById(orderDetails.getCustomerId())
-                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + orderDetails.getCustomerId()));
-        order.setCustomer(customer);
+//        Customer customer = customerRepository.findById(orderDetails.getCustomerId())
+//                .orElseThrow(() -> new ResourceNotFoundException("Customer not found with id " + orderDetails.getCustomerId()));
+//        order.setCustomer(customer);
         List<Product> products = new ArrayList<>();
         for (Long productId : orderDetails.getProductIds()) {
             Product product = productRepository.findById(productId)
@@ -87,7 +87,7 @@ public class OrderController {
     }
 
     // Delete an order
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteOrder/{id}")
     public ResponseEntity<?> deleteOrder(@PathVariable Long id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id " + id));

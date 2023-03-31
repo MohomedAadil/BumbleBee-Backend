@@ -15,12 +15,12 @@ public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @GetMapping
+    @GetMapping("/customers")
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/customer/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
         Customer customer = customerRepository.findById(id).orElse(null);
         if (customer == null) {
@@ -29,13 +29,13 @@ public class CustomerController {
         return ResponseEntity.ok(customer);
     }
 
-    @PostMapping
+    @PostMapping("/newCustomer")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerRepository.save(customer);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
         Customer existingCustomer = customerRepository.findById(id).orElse(null);
         if (existingCustomer == null) {
@@ -49,7 +49,7 @@ public class CustomerController {
         return ResponseEntity.ok(existingCustomer);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         Customer customer = customerRepository.findById(id).orElse(null);
         if (customer == null) {

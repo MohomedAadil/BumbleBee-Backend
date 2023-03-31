@@ -5,13 +5,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.swing.text.DateFormatter;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customer_TBL")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@Column(name = "customer_id")
     private Long id;
+//    @OneToMany(mappedBy = "customer")
+//    private List<Order> orders; // mapped to "customer_id" in the database table
     private String username;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date DOB;
