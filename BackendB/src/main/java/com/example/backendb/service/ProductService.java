@@ -22,9 +22,11 @@ public class ProductService {
         return repository.findAll();
     }
     public Product getProductById(Long id){
+
         return repository.findById(id).orElse(null);
     }
     public Product getProductByName(String name){
+
         return repository.findByName(name);
     }
     public String deleteProduct(Long id){

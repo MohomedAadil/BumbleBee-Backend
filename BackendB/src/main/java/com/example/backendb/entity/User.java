@@ -3,24 +3,29 @@ package com.example.backendb.entity;
 import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.swing.text.DateFormatter;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "customer_TBL")
-public class Customer {
+@Table(name = "user_TBL")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //@Column(name = "customer_id")
     private Long id;
-//    @OneToMany(mappedBy = "customer")
-//    private List<Order> orders; // mapped to "customer_id" in the database table
     private String username;
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date DOB;
-    private String phone;
+
+//    private int DOB;
+    private int phone;
     private String password;
+
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -30,19 +35,19 @@ public class Customer {
         this.username = username;
     }
 
-    public Date getDOB() {
-        return DOB;
-    }
+//    public int getDOB() {
+//        return DOB;
+//    }
+//
+//    public void setDOB(int DOB) {
+//        this.DOB = DOB;
+//    }
 
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
-    }
-
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
@@ -53,4 +58,7 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
+
+//    public String getEmail() {
+//    }
 }

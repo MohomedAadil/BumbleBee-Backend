@@ -13,17 +13,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-//    private Customer customer;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "order_products",
-            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"))
-    private List<Product> products;
-    private Date date;
+    private String productname;
 
-    //@Column(name = "customer_id", insertable = false, updatable = false)
+    private String address;
+    private Double totalAmount;
+
+    public Order(Long id, String productname, String address, Double totalAmount) {
+        this.id = id;
+        this.productname = productname;
+        this.address = address;
+        this.totalAmount = totalAmount;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -32,64 +34,21 @@ public class Order {
         this.id = id;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
-
-    public List<Product> getProducts() {
-        return products;
+    public String getProductname() {
+        return productname;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProductname(String productname) {
+        this.productname = productname;
     }
 
-    public Date getDate() {
-        return date;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
-    @ElementCollection
-    private List<Long> productIds;
-
-    public List<Long> getProductIds() {
-        return productIds;
-    }
-
-    public void setProductIds(List<Long> productIds) {
-        this.productIds = productIds;
-    }
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-//    private Long customerId;
-//
-//
-//    public Long getCustomerId() {
-//        return customerId;
-//    }
-//
-//    public void setCustomerId(Long customerId) {
-//        this.customerId = customerId;
-//    }
-
-    private Date orderDate;
-
-    public Date getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Date orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    private Double totalAmount;
 
     public Double getTotalAmount() {
         return totalAmount;
