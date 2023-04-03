@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import jakarta.servlet.*;
+//import com.example.backendb.CorsFilter;
 
 @SpringBootApplication
 public class BackendBApplication {
@@ -14,11 +15,11 @@ public class BackendBApplication {
         SpringApplication.run(BackendBApplication.class, args);
 
     }
-    @Bean
-    public FilterRegistrationBean<CorsFilter> corsFilter() {
-        FilterRegistrationBean<CorsFilter> registrationBean =
-                new FilterRegistrationBean<>(new CorsFilter());
-        registrationBean.setOrder(0);
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean<CorsFilter> corsFilter() {
+//        FilterRegistrationBean<CorsFilter> registrationBean =
+//                new FilterRegistrationBean<>(new CorsFilter());
+//        registrationBean.setOrder(0);
+//        return registrationBean;
+//    }
 }
