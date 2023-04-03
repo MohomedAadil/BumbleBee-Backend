@@ -18,12 +18,14 @@ public class Creditor {
     @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
+    private int phonenumber;
 
     public Creditor() {}
 
     public Creditor(String fullName, Date dateOfBirth) {
         this.fullName = fullName;
         this.dateOfBirth = dateOfBirth;
+        this.phonenumber= phonenumber;
     }
 
     // getters and setters for id, fullName, and dateOfBirth
@@ -50,5 +52,13 @@ public class Creditor {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public int getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(int phonenumber) {
+        this.phonenumber = phonenumber;
     }
 }

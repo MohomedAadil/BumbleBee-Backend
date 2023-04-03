@@ -30,6 +30,7 @@ public class CreditorService {
         if (existingCreditor != null) {
             existingCreditor.setFullName(creditor.getFullName());
             existingCreditor.setDateOfBirth(creditor.getDateOfBirth());
+            existingCreditor.setPhonenumber(creditor.getPhonenumber());
             creditorRepository.save(existingCreditor);
         }
     }
