@@ -16,6 +16,7 @@ public class Order {
     private String productname;
 
     private String address;
+    @Column(name = "totalamount")
     private Double totalAmount;
 
     public Order(Long id, String productname, String address, Double totalAmount) {

@@ -13,16 +13,16 @@ public class Installment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "customer_id")
+    @Column(name = "customerid")
     private Long creditor;
 
-    @Column(name = "loan_balance")
+    @Column(name = "loanbalance")
     private BigDecimal loanBalance;
 
-    @Column(name = "used_amount")
+    @Column(name = "usedamount")
     private BigDecimal usedAmount;
 
-    @Column(name = "installment_plan")
+    @Column(name = "installmentplan")
     private String installmentPlan;
 
     // getters and setters

@@ -1,32 +1,30 @@
 package com.example.backendb.entity;
-
-
 import jakarta.persistence.*;
 
 import java.util.Date;
 
 @Entity
-@Table(name = "creditor")
-public class Creditor {
+@Table(name = "customer")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name")
+//    @Column(name = "fullName")
     private String fullName;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "date_of_birth")
+//    @Column(name = "dateOfBirth")
     private Date dateOfBirth;
     private int phonenumber;
 
-    public Creditor() {}
-
-    public Creditor(String fullName, Date dateOfBirth) {
-        this.fullName = fullName;
-        this.dateOfBirth = dateOfBirth;
-        this.phonenumber= phonenumber;
-    }
+    public Customer() {}
+//
+//    public Customer(String fullName, Date dateOfBirth) {
+//        this.fullName = fullName;
+//        this.dateOfBirth = dateOfBirth;
+//        this.phonenumber= phonenumber;
+//    }
 
     // getters and setters for id, fullName, and dateOfBirth
 
@@ -62,3 +60,4 @@ public class Creditor {
         this.phonenumber = phonenumber;
     }
 }
+
