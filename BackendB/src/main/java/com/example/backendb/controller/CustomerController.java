@@ -1,8 +1,10 @@
 package com.example.backendb.controller;
 
 import com.example.backendb.entity.Customer;
+import com.example.backendb.repository.CustomerRepository;
 import com.example.backendb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +15,10 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    public CustomerController() {
+        this.customerService = customerService;
+    }
 
     @GetMapping("/allCustomers")
     public List<Customer> getAllCustomers() {
@@ -25,8 +31,13 @@ public class CustomerController {
     }
 
     @PostMapping("/addCustomer")
-    public void addCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+        if(customerService == null) {
+            // Log or throw an exception indicating that customerService is null
+            System.out.println("Issuueeeeeeeeee");
+        }
         customerService.addCustomer(customer);
+        return ResponseEntity.ok(customer);
     }
 
     @PutMapping("/updateCustomer/{id}")
@@ -35,7 +46,11 @@ public class CustomerController {
     }
 
     @DeleteMapping("/deleteCustomer/{id}")
-    public void deleteCustomer(@PathVariable Long id) {
+    public String deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
+        return null;
+    }
+
+    public void setCustomerRepository(CustomerRepository customerRepository1) {
     }
 }

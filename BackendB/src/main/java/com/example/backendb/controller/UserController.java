@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.lang.model.util.Elements;
-
 @RestController
 //@RequestMapping("/api/user")
 public class UserController {
@@ -40,9 +38,9 @@ public class UserController {
         }
     }
 
-    @PutMapping("/updateUser/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
-        User existingUser = userRepository.findById(id).orElse(null);
+    @PutMapping("/updateUser/{name}")
+    public ResponseEntity<User> updateUser(@PathVariable String username, @RequestBody User user) {
+        User existingUser = userRepository.findByUsername(username);
         if (existingUser == null) {
             return ResponseEntity.notFound().build();
         }
@@ -62,5 +60,29 @@ public class UserController {
         }
         userRepository.delete(user);
         return ResponseEntity.noContent().build();
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+
+    }
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public UserService getUserService() {
+        return userService;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public ResponseEntity<String> signup(User user) {
+        return null;
+    }
+
+    public ResponseEntity<String> addUser(User user) {
+        return null;
     }
 }

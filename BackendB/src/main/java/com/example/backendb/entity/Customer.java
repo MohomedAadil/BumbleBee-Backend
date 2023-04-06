@@ -1,7 +1,8 @@
 package com.example.backendb.entity;
 import jakarta.persistence.*;
+import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "customer")
@@ -15,7 +16,7 @@ public class Customer {
 
     @Temporal(TemporalType.DATE)
 //    @Column(name = "dateOfBirth")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private int phonenumber;
 
     public Customer() {}
@@ -44,11 +45,11 @@ public class Customer {
         this.fullName = fullName;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

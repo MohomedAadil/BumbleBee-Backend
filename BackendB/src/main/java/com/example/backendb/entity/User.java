@@ -17,6 +17,12 @@ public class User {
     private int phone;
     private String password;
 
+    public User(String test1, String password) {
+    }
+
+    public User() {
+
+    }
 
 
     public Long getId() {
