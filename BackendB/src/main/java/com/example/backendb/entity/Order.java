@@ -30,6 +30,9 @@ public class Order {
 
     }
 
+    public Order(String s, String matara, double v) {
+    }
+
 
     public Long getId() {
         return id;
@@ -61,5 +64,14 @@ public class Order {
 
     public void setTotalAmount(Double totalAmount) {
         this.totalAmount = totalAmount;
+    }
+
+    public boolean getStatusCode() {
+
+        return false;
+    }
+
+    public char getStatusCodeValue() {
+        return 200;
     }
 }

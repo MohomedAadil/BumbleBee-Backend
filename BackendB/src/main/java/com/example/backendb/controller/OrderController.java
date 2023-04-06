@@ -57,9 +57,9 @@ public class OrderController {
     public ResponseEntity<?> deleteOrder(@PathVariable Long id) {
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Order not found with id " + id));
-
         orderRepository.delete(order);
 
         return ResponseEntity.ok().build();
     }
+
 }
