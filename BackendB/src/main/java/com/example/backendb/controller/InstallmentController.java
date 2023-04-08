@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
+import java.util.List;
+
 @RestController
 //@RequestMapping("/installments")
 public class InstallmentController {
@@ -14,6 +17,10 @@ public class InstallmentController {
     @Autowired
     private InstallmentService installmentService;
 
+    @GetMapping("/getAllInstall")
+    public List<Installment> getAllInstallments(){
+        return installmentService.getAllInstallments();
+    }
     @GetMapping("/getInstall/{id}")
     public ResponseEntity<Installment> getInstallmentById(@PathVariable Long id) {
         Installment installment = installmentService.getInstallmentById(id);

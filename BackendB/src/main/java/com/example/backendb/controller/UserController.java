@@ -38,7 +38,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/updateUser/{name}")
+    @PutMapping("/updateUser/{username}")
     public ResponseEntity<User> updateUser(@PathVariable String username, @RequestBody User user) {
         User existingUser = userRepository.findByUsername(username);
         if (existingUser == null) {

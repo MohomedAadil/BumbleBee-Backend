@@ -1,10 +1,13 @@
 package com.example.backendb.service;
 
+import com.example.backendb.entity.Customer;
 import com.example.backendb.entity.Installment;
 import com.example.backendb.exception.ResourceNotFoundException;
 import com.example.backendb.repository.InstallmentRepository;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
+
+import java.util.List;
 
 @Service
 public class InstallmentService {
@@ -12,6 +15,9 @@ public class InstallmentService {
     @Autowired
     private InstallmentRepository installmentRepository;
 
+    public List<Installment> getAllInstallments() {
+        return installmentRepository.findAll();
+    }
     public Installment getInstallmentById(Long id) {
         return installmentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Installment not found with id " + id));
